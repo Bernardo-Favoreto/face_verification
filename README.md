@@ -1,6 +1,6 @@
 # *Face Verification with Anti-Spoof*
 
-Face identification merged with face anti-spoof detection. The idea is that a user first register his/her face. Once that is done, the user can be authenticated using his face. The system will only authenticate if the face is real and there's a match for that face on the database.
+Face identification merged with face anti-spoof detection. The idea is that a user first register his/her face. Once that is done, the user can be authenticated using the registred face. The system will only authenticate if the face is real and there's a match for that face on the database.
 
 ## Features
 * Face Identification
@@ -17,7 +17,7 @@ Download the face_ver.yml file and go to your command prompt and type the follow
   ```bash
   conda env create -f face_ver.yml
   ```
-Verified that the new environment was installed correctly:
+Verify that the new environment was installed correctly:
   ```bash
   conda list
   ```
@@ -32,8 +32,8 @@ Verified that the new environment was installed correctly:
    ```bash
    python image_dataset_generator.py
    ```
-   And enter the name of the person who's registering
-   **NOTE:** MAX_NUMBER_OF_IMAGES define the number of images that'll be generated (one is enough). The image(s) will be saved in the    *images folder*.
+   And enter the name of the person who's registering<br>
+   **NOTE:** MAX_NUMBER_OF_IMAGES define the number of images that'll be generated (one is enough).      The image(s) will be saved in the    *images folder*.
 2. Go to the bottom of the *fr_utils.py* file and uncomment the *update_or_create_known_people()* line (I'm still figuring out a faster and smarter way of doing this). Run the script from your command line by typing:
     ```bash
     python fr_utils.py
@@ -44,7 +44,7 @@ Verified that the new environment was installed correctly:
     ```bash
     python fr_main.vX.py
     ```
-  **NOTE:** the X stands for the version number. E.g. for the 0-th version, it'd be: python fr_main.v0.py
+    **NOTE:** the X stands for the version number. E.g. for the 0-th version, it'd be: python fr_main.v0.py
   
 ### If you already used the algorithm
 1.  Simply run the main file by repeating the step number 3 above.
