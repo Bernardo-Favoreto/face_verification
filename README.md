@@ -50,9 +50,11 @@ The usage differs if a user is registering for the first time or coming back for
     python fr_main.vX.py
     ```
     **[NOTE]** the X stands for the version number. E.g. for the 0-th version, it'd be: python fr_main.v0.py
+4. Check your prompt for the output.
   
 ### If you already used the algorithm
 1.  Simply run the main file by repeating the step number 3 above.
+2.  Check your prompt for the output.
  
 
 
