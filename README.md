@@ -1,6 +1,6 @@
 # *Face Verification with Anti-Spoof*
 
-Face identification merged with face anti-spoof detection. The idea is that a user first register his/her face. Once that is done, the user can be authenticated using the registred face. The system will only authenticate if the face is real and there's a match for that face on the database.
+Face identification merged with face anti-spoof detection trained on real and fake images dataset using CNN's.
 
 ## Features
 * Face Identification
@@ -29,7 +29,7 @@ Activate the environment typing:
 
 
 ## Usage
-**[NOTE]** the usage is different if you are using for the first time or not.
+The usage differs if a user is registering for the first time or coming back for a login authentication. Below are the instructions for both cases.
 
 ### If you never used the algorithm
 1. Generate your image data using the script *Image_Dataset_Generator.py*. Simply type:
