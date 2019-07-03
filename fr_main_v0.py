@@ -1,5 +1,5 @@
 # USAGE
-# python liveness_demo.py --model liveness.model --le le.pickle --detector face_detector
+# python liveness_demo.py
 
 # import the necessary packages
 from imutils.video import VideoStream
@@ -38,11 +38,12 @@ face_names = []
 process_this_frame = True
 flag = True
 face_encoded = []
-len_threshold = 20
 vs = VideoStream(src=0).start()
 time.sleep(2.0)
 spoof_list = []
 name_list = []
+id_threshold = 10
+spoof_threshold = 30
 
 flag = True
 flag_2 = True
@@ -50,19 +51,22 @@ flag_2 = True
 
 
 while flag == True:
-    frame_spoof = vs.read()
-    while len(spoof_list) < 30:
-        spoof_list.append(anti_spoof(frame_spoof, [], 0.5,
-                            protoPath, modelPath, model, le, net, 25))
-    if spoof_list.count('real') > spoof_list.count('fake'):
+    while len(spoof_list) < spoof_threshold:
+        frame_spoof = vs.read()
+        spoof = anti_spoof(frame_spoof, [], confidence1,
+                        protoPath, modelPath, model, le, net)
+        if spoof != None:
+            spoof_list.append(spoof)
+    if spoof_list.count('real') > 0.2*spoof_list.count('fake'):
         print("Spoof detection test passed")
         while flag_2 == True:
             frame_id = vs.read()
-            name_list.append(face_rec(frame_id, known_face_encodings,
+            name = face_rec(frame_id, known_face_encodings,
                         known_face_names, face_locations, face_encodings,
-                        face_names, process_this_frame, face_encoded,
-                        len_threshold))                   
-            if len(name_list) >= 10:
+                        face_names, process_this_frame, face_encoded)
+            if name != None: 
+                name_list.append(name)                  
+            if len(name_list) >= id_threshold:
                 print("Welcome {}!".format(max(set(name_list), key=name_list.count)))
                 flag_2 = False
         flag = False
